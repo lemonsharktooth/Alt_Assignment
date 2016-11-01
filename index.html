@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- This is a first example of using a template -->
+
+<head>
+
+<!-- include our libraries and css files -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- put your HTML here -->
+
+ 	<div class="container">
+
+<!-- page tile -->
+  		<div class="page-header">
+    		<h1>My Animal Data and Pictures</h1>
+  		</div>    
+
+<!-- Navigation Menu -->
+	    <ul class="nav nav-tabs">
+	        <li role="" class="active"><a href="#" id="albums-tab" >Categories</a></li>
+	        <li role=""><a href="#" id="animals-tab" >Animals</a></li>
+          <li role=""><a href="#" id="src-tab" >Photos</a></li>
+	        <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+	      </ul>
+	    <br/><br/>
+
+
+<!-- div for js stuff -->
+
+		<div id="content"  class="container-fluid"  role="main">
+		</div>
+    </div> 
+
+<!--template for Category albums
+shows all categorys of animals i.e "Reptile" "mammal" etc. 
+-->
+ 
+<script id="category-template" type="text/x-handlebars-template">
+	  <div class="row">
+
+	    {{#each category}}
+	    <div class="col-xs-12 col-md-3"> 
+	        <div class="album-thumbnail"  data-id="{{@index}}">
+	          <img class="crop-img" src="{{thumbnail}}" alt=""/> 
+	            
+	          <div class="caption">
+	              <h4> {{name}} </h4>
+	              <p>{{category.length}} photos</p>
+	          </div>
+	         </div>
+	    </div> <!-- / col -->
+
+	    {{/each}}
+
+	  </div> <!-- / row -->
+</script>
+
+<!--template for animals
+it shows all animals within a category
+ex.: a user clicks on category "mammal" it displays all mammals
+-->
+
+<script id="animals-template" type="text/x-handlebars-template">
+	  <div class="row">
+	    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+	    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+	    {{#each animals}}
+	    <div class="col-xs-12 col-md-3"> 
+	     <div class="photo-thumbnail"  data-id="{{@index}}">
+	        <img class="crop-img" src="{{src}}" alt=""/> 
+	          
+	         <div class="caption">
+	            <h3>{{name}}</h3>
+	             <p>{{image.length}} photos</p>
+	         </div>
+	      </div>
+	     <div class= "col-md-6 col-xs-12">
+          <p>{{description}}</p>
+
+       </div>  
+	    </div> <!-- / col -->
+	    {{/each}}
+
+	  </div> <!-- / row -->
+	</script>
+
+  <!--
+  template for src
+  it shows all images of a single animal ex: shows all snake images
+  -->
+
+<script id="src-template" type="text/x-handlebars-template">
+    <div class="row">
+      <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+      <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+      {{#each image}}
+      <div class="col-xs-12 col-md-3"> 
+       <div class="photo-thumbnail"  data-id="{{@index}}">
+          <img class="crop-img" src="{{src1}}" alt=""/> 
+            
+           <div class="caption">
+              <h3>{{name}}</h3>
+               <p>{{animals.length}} photos</p>
+           </div>
+        </div>
+
+      </div> <!-- / col -->
+      {{/each}}
+
+    </div> <!-- / row -->
+  </script>
+
+<!--script to view a single photo
+once they click on an image it views bigger image
+-->
+
+	<script id="photo-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-xs-12 col-md-12"> 
+        <img class="large-img" src="{{src1}}" alt=""/> 
+          
+        <div class="caption">
+            <h3>{{name}}</h3>
+        </div>
+      </div> <!-- / col -->
+
+  </div> <!-- / row -->
+</script>
+
+
+<!--script for slideshow-->
+
+	<script id="slideshow-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+  
+       <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+          {{#each name}}
+            <div class="item {{#if @first}}active{{/if}}">
+             <img class="carousel-img" src="{{src1}}" alt=""/> 
+            <div class="carousel-caption">
+              Image caption
+            </div>
+          </div> <!-- / carousel item -->
+          {{/each}}
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div> <!-- / carousel --> 
+  </div> <!-- / col -->
+</div> <!-- / row -->
+</script>
+
+</body>
