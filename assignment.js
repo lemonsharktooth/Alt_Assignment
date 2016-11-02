@@ -89,7 +89,7 @@ $(document).ready(function(){
             console.log('current_cat: ', current_category);
 
 			// displays the different animals in the category
-			showTemplate(animals_template, current_canimal{});
+			showTemplate(animals_template, current_category);
 
 			// add an on click al all the photo thumbnails
 			// which displays the photo in a modal popup
