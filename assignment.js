@@ -83,10 +83,10 @@ $(document).ready(function(){
 
 			// set the current album to this album
 			// displays the different categories
-			current_category = animals_data.category[index];
+			current_animal = animals_data.category[index];
 
 			// displays the different animals in the category
-			showTemplate(animals_template, current_category);
+			showTemplate(animals_template, current_canimal{});
 
 			// add an on click al all the photo thumbnails
 			// which displays the photo in a modal popup
