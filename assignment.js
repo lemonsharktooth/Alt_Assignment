@@ -84,16 +84,12 @@ $(document).ready(function(){
 
 			// set the current album to this album
 			// displays the different categories
-<<<<<<< HEAD
 
 			current_category = animals_data.category[index];
-            console.log('current_cat: ', current_category);
-=======
-			current_category = animals_data.category[index];
->>>>>>> parent of cbbabbb... the one that broke. thats mine...the one that broke
+            
 
 			// displays the different animals in the category
-			showTemplate(animals_template, current_canimal{});
+			showTemplate(animals_template, current_category);
 
 			// add an on click al all the photo thumbnails
 			// which displays the photo in a modal popup
