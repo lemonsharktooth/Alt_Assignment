@@ -32,19 +32,19 @@ $(document).ready(function(){
 	// compile all of our templates ready for use
 	//
 	var source   = $("#category-template").html();
-	albums_template = Handlebars.compile(source);
+	category_template = Handlebars.compile(source);
 	
 	source   = $("#animals-template").html();
-	photos_template = Handlebars.compile(source);
+	animals_template = Handlebars.compile(source);
 	
-	source   = $("#animals-template").html();
+	source   = $("#photo-template").html();
 	photo_template = Handlebars.compile(source);
 	
 	source   = $("#slideshow-template").html();
 	slideshow_template = Handlebars.compile(source);
 
 	source   = $("#src-template").html();
-	slideshow_template = Handlebars.compile(source);
+	src_template = Handlebars.compile(source);
 
 
 	// 
@@ -53,7 +53,7 @@ $(document).ready(function(){
 	$("#albums-tab").click(function () {
 
 		// displays the albums template (all the categories)
-		showTemplate(category-template, animals_data.category);
+		showTemplate(category_template, animals_data);
 
 		// make the albums tab the active one
 		// first make the currently active tab inactive
@@ -80,10 +80,12 @@ $(document).ready(function(){
 			// (which we set to the index of the album in
 			// the array - @index)
 			var index = $(this).data("id");
+            console.log('index:', index);
 
 			// set the current album to this album
 			// displays the different categories
 			current_category = animals_data.category[index];
+            console.log('current_cat: ', current_category);
 
 			// displays the different animals in the category
 			showTemplate(animals_template, current_category);
@@ -92,7 +94,7 @@ $(document).ready(function(){
 			// which displays the photo in a modal popup
 
 				//when you click on a category of animals 
-				$(".album-thumbnail").click(function (){
+				$(".photo-thumbnail").click(function (){
 			
 					// get the index (position in the array)
 					// of the album we clicked on
@@ -101,9 +103,11 @@ $(document).ready(function(){
 					// (which we set to the index of the album in
 					// the array - @index)
 					var index = $(this).data("id");
+                    console.log('index 2: ', index)
 
 					// set the current album to this animal type
-					current_name = current_category.name[index];
+					current_name = current_category.animals[index];
+                    console.log('current_name: ', current_name);
 
 					// displays the photos of animal
 
@@ -263,6 +267,6 @@ $(document).ready(function(){
 	// start the page by showing the albums view
 	// we do this by virtually clicking on the 
 	// albums tab
-	$("#albums-tab").click();
+	$("#animals-tab").click();
 
 });
