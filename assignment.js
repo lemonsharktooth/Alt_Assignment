@@ -93,7 +93,7 @@ $(document).ready(function(){
 >>>>>>> parent of cbbabbb... the one that broke. thats mine...the one that broke
 
 			// displays the different animals in the category
-			showTemplate(animals_template, current_category);
+			showTemplate(animals_template, current_canimal{});
 
 			// add an on click al all the photo thumbnails
 			// which displays the photo in a modal popup
